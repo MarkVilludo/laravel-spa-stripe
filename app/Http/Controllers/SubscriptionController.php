@@ -34,8 +34,14 @@ class SubscriptionController extends Controller
         $plans = $this->retrievePlans();
         $user = Auth::user();
         
-        return view('subscribe', [
-            'user'=>$user,
+        // return view('subscribe', [
+        //     'user'=>$user,
+        //     'intent' => $user->createSetupIntent(),
+        //     'plans' => $plans
+        // ]);
+        // dd($user->createSetupIntent());
+        return inertia('Subscription', [
+            'user'=> $user,
             'intent' => $user->createSetupIntent(),
             'plans' => $plans
         ]);
