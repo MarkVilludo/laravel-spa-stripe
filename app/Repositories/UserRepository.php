@@ -85,7 +85,7 @@ class UserRepository implements UserInterface
              $user->delete();
  
              DB::commit();
-             return $this->success("User deleted", $user);
+             return $this->success("User deleted", $user, 204);
          } catch(\Exception $e) {
              DB::rollBack();
              return $this->error($e->getMessage(), $e->getCode());
