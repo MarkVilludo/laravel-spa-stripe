@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{StripePaymentController, SubscriptionController};
+use App\Http\Controllers\Api\PostController;
 use Inertia\Inertia; // Import the Inertia facade
 use Illuminate\Foundation\Application;
 
@@ -51,4 +52,5 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/subscribe', [SubscriptionController::class, 'showSubscription'])->name('subscription');
+    Route::resource('/posts', PostController::class);
 });

@@ -9,7 +9,7 @@ use Tests\TestCase;
 class ProfileInformationTest extends TestCase
 {
     use RefreshDatabase;
-
+    
     public function test_profile_information_can_be_updated(): void
     {
         $this->actingAs($user = User::factory()->create());

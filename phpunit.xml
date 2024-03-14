@@ -17,6 +17,12 @@
             <directory>app</directory>
         </include>
     </source>
+     <!-- Excluding specific groups -->
+    <groups>
+        <exclude>
+            <group>off</group>
+        </exclude>
+    </groups>
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
