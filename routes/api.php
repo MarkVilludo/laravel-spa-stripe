@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\Mail\PoftfolioEmailController;
 
 
 
@@ -28,3 +29,5 @@ Route::post('logout',[UserAuthController::class,'logout'])->middleware('auth:san
 
 
 Route::resource('users', UserController::class);
+
+Route::post('send-mail', [PoftfolioEmailController::class, 'sendMail']);
