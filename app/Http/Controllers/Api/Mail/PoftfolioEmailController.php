@@ -11,26 +11,16 @@ use App\Mail\PortfolioMail;
 class PoftfolioEmailController extends Controller
 {
     //
-    public function sendMail(Request $request)
+    public function sendMail(PortfolioRequest $request)
     {
-       // Validate the incoming request data
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'message' => 'required|string|max:1000',
-        ]);
-
-        // If validation passes, proceed to send the email
         $content = [
-            'subject' => 'This is the mail subject',
+            'subject' => 'Message from Portfolio',
             'body' => 'This is the email body of how to send email from Laravel 10 with Mailtrap.',
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'message' => $validatedData['message'],
+            'name' => request('name'),
+            'email' => request('email'),
+            'message' => request('message'),
         ];
-
-        Mail::to($validatedData['email'])->send(new PortfolioMail($content));
-
+        Mail::to(request('email'))->send(new PortfolioMail($content));
         return "Email has been sent.";
     }
 }
